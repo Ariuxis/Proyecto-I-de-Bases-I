@@ -1,3 +1,10 @@
+/* Run script as following:
+ * Log into cqlsh shell with the following command: cqlsh
+ * Run the following command: source '~/mydir/myscript.cql'
+ * In the developer's case, this is as following: source '~/Desktop/Universidad/BasesI/databases.cql'
+ * Quitting the cqlsh shell: exit
+ */
+
 create keyspace if not exists shop with replication = {
 	'class' : 'SimpleStrategy',
 	'replication_factor' : 1
@@ -24,17 +31,10 @@ create table if not exists product (
 create table if not exists errand (
 	errandID int primary key,
 	clientID int,
-	errandState set<text>,
-	errandQuantity int
-);
-
-create table if not exists bill (
-	billID int primary key,
-	billCard set<text>,
-	errandID int,
+	errandState text,
+	errandQuantity int,
+	billCard text,
 	cardID int,
 	approvalID int,
 	cardEntity int
 );
-
-# WIP tables may not be completed. Further reading into this.
