@@ -32,9 +32,15 @@ create table if not exists errand (
 	errandID int primary key,
 	clientID int,
 	errandState text,
+	erranddate date,
+	billdate date,
 	errandQuantity int,
 	billCard text,
 	cardID int,
 	approvalID int,
-	cardEntity int
+	cardEntity int,
+	productID set<int>
 );
+
+copy client from 'cliente.csv' with delimiter = ';' and header = true;
+copy product from 'producto.csv' with delimiter = ',' and header = true;
